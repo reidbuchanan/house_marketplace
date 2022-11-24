@@ -1,6 +1,9 @@
 import React from "react";
+import { toast } from "react-toastify";
 import {useState} from 'react'
 import {Link, useNavigate} from 'react-router-dom'
+import {getAuth, signInWithEmailAndPassword} from 'firebase/auth'
+import OAuth from "../components/OAuth";
 import {ReactComponent as ArrowRightIcon} from '../assets/svg/keyboardArrowRightIcon.svg'
 import visibilityIcon from '../assets/svg/visibilityIcon.svg'
 
@@ -20,6 +23,29 @@ const onChange = (e) => {
   }))
 }
 
+const onSubmit = async (e) => {
+  e.preventDefault()
+
+try {
+  
+  
+    const auth = getAuth()
+  
+    const userCredential = await signInWithEmailAndPassword
+    (auth, email, password)
+  
+    if(userCredential.user) {
+      navigate ('/')
+    }
+  }
+  
+catch (error) {
+  toast.error('Bad User Credentials')
+}
+}
+
+
+
   return (
     <>
     <div className="pageContainer">
@@ -28,7 +54,7 @@ const onChange = (e) => {
       </header>
 
       <main>
-        <form>
+        <form onSubmit={onSubmit}>
           <input
            type="email" 
            className="emailInput" 
@@ -65,7 +91,7 @@ const onChange = (e) => {
             </div>
         </form>
 
-        {/*Google Auth */}
+        <OAuth />
         <Link to='/sign-up' className="registerLink">
           Sign Up Instead
         </Link>
