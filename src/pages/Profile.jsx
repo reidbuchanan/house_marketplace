@@ -1,6 +1,8 @@
 import React from 'react'
 import {useState, useEffect} from 'react'
 import {getAuth , updateProfile} from 'firebase/auth'
+import arrowRight from '../assets/svg/keyboardArrowRightIcon.svg'
+import homeIcon from '../assets/svg/homeIcon.svg'
 
 import {updateDoc, doc} from 'firebase/firestore'
 import {db} from '../firebase.config'
@@ -91,6 +93,11 @@ const onChange = (e) => {
             />
         </form>
       </div>
+      <Link to='/create-listing' className='createListing'>
+        <img src={homeIcon} alt="home" />
+        <p>Sell or rent your home</p>
+        <img src={arrowRight} alt="arrowright" />
+      </Link>
     </main>
   </div>
 }
