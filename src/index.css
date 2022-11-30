@@ -301,6 +301,11 @@ button {
   margin-bottom: 3rem;
 }
 
+.slideListingImage {
+  width: 10%;
+  height: auto
+}
+
 @media (min-width: 1217px) {
   .explore {
     margin-bottom: 10rem;
